@@ -24,7 +24,7 @@ env = gym.make('CartPole-v0')
 
 
 def loss_f(y_true, y_pred):
-    return -tf.tensordot(y_true,y_pred,axes=[1,1],name="val")
+    return -tf.tensordot(y_true,tf.math.log(y_pred),axes=[1,1],name="val")
 try:
     model=ke.models.load_model(locc)
 except OSError:
